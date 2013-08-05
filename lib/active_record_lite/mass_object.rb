@@ -11,6 +11,13 @@ class MassObject
   end
 
   def self.parse_all(results)
+    subclass_objects = []
+
+    results.each do |row_hash|
+      subclass_objects << self.new(row_hash)
+    end
+
+    subclass_objects
   end
 
   def initialize(params = {})

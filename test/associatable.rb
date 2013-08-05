@@ -27,11 +27,23 @@ class House < SQLObject
 end
 
 cat = Cat.find(1)
+puts "The Cat"
 p cat
+puts
+puts "The Cat's Human"
 p cat.human
-
+puts
+puts "The Human"
 human = Human.find(1)
+puts human
+puts
+puts "Human's cats"
 p human.cats
-p human.house
+puts
 
+puts "Human's house"
+p human.house
+puts
+
+puts "Cat's house"
 p cat.house

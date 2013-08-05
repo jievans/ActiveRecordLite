@@ -5,6 +5,10 @@ require_relative './searchable'
 require 'active_support/inflector'
 
 class SQLObject < MassObject
+
+  extend Searchable
+  extend Associatable
+
   def self.set_table_name(table_name)
     @table_name = table_name.tableize
   end
@@ -35,6 +39,22 @@ class SQLObject < MassObject
     SQL
     self.new(row_hash.first)
   end
+
+  def save
+    unless self.id.nil?
+      update
+    else
+      create
+    end
+  end
+
+  def attribute_values
+    self.instance_variables.map do |var_sym|
+      instance_variable_get(var_sym)
+    end
+  end
+
+  private
 
   def create
     instance_strings = self.instance_variables.map do |var_symbol|
@@ -81,20 +101,6 @@ class SQLObject < MassObject
     WHERE id = #{self.id};
     SQL
 
-  end
-
-  def save
-    unless self.id.nil?
-      update
-    else
-      create
-    end
-  end
-
-  def attribute_values
-    self.instance_variables.map do |var_sym|
-      instance_variable_get(var_sym)
-    end
   end
 end
 
