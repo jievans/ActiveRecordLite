@@ -47,3 +47,4 @@ puts
 
 puts "Cat's house"
 p cat.house
+puts
