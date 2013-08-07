@@ -1,4 +1,5 @@
-require 'active_record_lite'
+# require 'active_record_lite'
+require_relative '../lib/active_record_lite'
 
 # https://tomafro.net/2010/01/tip-relative-paths-with-file-expand-path
 cats_db_file_name =
