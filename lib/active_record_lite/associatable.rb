@@ -117,7 +117,8 @@ module Associatable
       row_hashes = DBConnection.execute(<<-SQL)
       SELECT #{second_assoc.other_table}.*
       FROM #{second_assoc.other_table} JOIN #{first_assoc.other_table}
-      ON #{second_assoc.other_table}.#{second_assoc.primary_key} = #{first_assoc.other_table}.#{second_assoc.foreign_key}
+      ON #{second_assoc.other_table}.#{second_assoc.primary_key} =
+      #{first_assoc.other_table}.#{second_assoc.foreign_key}
       WHERE #{first_assoc.other_table}.#{first_assoc.primary_key} = #{self.id}
       SQL
 
