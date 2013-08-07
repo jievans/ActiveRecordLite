@@ -1,3 +1,5 @@
+## Author Josh Evans
+
 require 'active_support/core_ext/object/try'
 require 'active_support/inflector'
 require_relative './db_connection.rb'
